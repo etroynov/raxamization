@@ -1,36 +1,19 @@
-import { Layout, Menu } from "antd";
-import { UserOutlined } from "@ant-design/icons";
-import './App.css';
+import { FC } from 'react';
 
-const { Header, Content, Footer, Sider } = Layout;
+import { Map } from './components/Map';
 
-export const App = () => (
-  <Layout>
-    <Sider
-      style={{
-        overflow: "auto",
-        height: "100vh",
-        position: "fixed",
-        left: 0,
-      }}
-    >
-      <div className="logo" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
-        <Menu.Item key="1" icon={<UserOutlined />}>
-          Сотрудники
-        </Menu.Item>
-      </Menu>
-    </Sider>
-    <Layout className="site-layout" style={{ marginLeft: 200 }}>
-      <Header className="site-layout-background" style={{ padding: 0 }} />
-      <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-        <div
-          className="site-layout-background"
-          style={{ padding: 24, textAlign: "center" }}
-        >
-          content
-        </div>
-      </Content>
-    </Layout>
-  </Layout>
+import styles from './App.module.css';
+
+export const App: FC = () => (
+  <section className={styles.container}>
+    <aside>
+      <header>
+        <h1>Карта</h1>
+      </header>
+    </aside>
+    <main>
+      <Map />
+    </main>
+    <aside></aside>
+  </section>
 );
