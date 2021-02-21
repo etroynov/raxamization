@@ -1,4 +1,87 @@
+.header {
+  display: grid;
+  align-items: center;
+  grid-auto-flow: column;
+  height: 70px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.logo {
+  width: 65px;
+  height: 25px;
+  background: url(https://contestfiles.s3.eu-central-1.amazonaws.com/contests/klLMkDIo_1610722822.png);
+  background-size: contain;
+}
+
+.searchInput {
+  height: 35px;
+  width: 100%;
+  padding: 2px 40px 2px 10px;
+  font-size: 16px;
+  border: 1px solid #a6a9c4;
+  border-radius: 50px;
+  outline: none;
+}
+
 .container {
     display: grid;
-    grid-template-columns: 300px 1fr 300px;
+    grid-template-columns: auto 1fr auto;
+    height: calc(100vh - 70px);
+}
+
+.left {
+  padding-left: 30px;
+}
+
+.right {
+  padding-right: 30px;
+}
+
+.center {
+  position: relative;
+  display: flex;
+}
+
+.center span {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+}
+
+.sidebarLeft,
+.sidebarRight {
+  position: relative;
+  padding: 20px;
+  z-index: 999;
+}
+
+.sidebarLeft {
+  display: grid;
+  grid-auto-rows: max-content;
+  gap: 24px;
+  border-right: 1px solid #dddddd;
+  box-shadow: 3px 4px 4px rgba(143, 121, 220, 0.25);
+}
+
+.sidebarRight {
+  border-left: 1px solid #dddddd;
+  box-shadow: -3px 4px 4px rgba(143, 121, 220, 0.25);
+}
+
+.sidebarRightTitle {
+  font: normal 24px 'Rubik';
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid #dddddd;
+}
+
+.calendar {
+  padding: 15px;
+  border-radius: 25px;
+  border: 1px solid #E0DFF0;
+  box-shadow: none;
 }

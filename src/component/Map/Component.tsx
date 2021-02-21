@@ -51,7 +51,7 @@ export const Map = () => {
       // // Добавление маршрута на карту.
       // YMap.geoObjects.add(multiRoute);
     });
-  });
+  }, []);
   return (
     <div
       className={styles.container}
