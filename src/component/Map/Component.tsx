@@ -11,13 +11,7 @@ type Props = {
 export const Map: FC<Props> = ({ routes }) => {
   const [mapInstance, setMapInstance] = useState<any>();
 
-  const points = routes.map(([,,,, address]: any)=> address).reduce((acc: string[], curr: string) => {
-    if (!acc.includes(curr)) {
-      acc.push(curr);
-    }
-
-    return acc;
-  }, []);
+  const points = routes.map(([,,,, address]: any)=> address);
 
   useLayoutEffect(() => {
     ymaps.ready(function () {
