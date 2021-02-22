@@ -5,8 +5,12 @@
   font: normal 14px 'Rubik';
   border: 1px solid #d4d4d4;
   border-radius: 25px;
+  cursor: pointer;
 }
 
+.active {
+  border: 1px solid #8F79DC;
+}
 
 .user {
   display: grid;

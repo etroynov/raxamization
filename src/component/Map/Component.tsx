@@ -1,57 +1,56 @@
-import { useLayoutEffect } from 'react';
+import { FC, useState, useLayoutEffect, useEffect } from 'react';
 
 import styles from './index.module.css';
 
 declare var ymaps: any;
 
-export const Map = () => {
+type Props = {
+  routes: any;
+}
+
+export const Map: FC<Props> = ({ routes }) => {
+  const [mapInstance, setMapInstance] = useState<any>();
+
+  const points = routes.map(([,,,, address]: any)=> address).reduce((acc: string[], curr: string) => {
+    if (!acc.includes(curr)) {
+      acc.push(curr);
+    }
+
+    return acc;
+  }, []);
+
   useLayoutEffect(() => {
     ymaps.ready(function () {
       const YMap = new ymaps.Map('map', {
-        center: [55.76, 37.64],
-        zoom: 10,
+        center: [55.80, 49.16],
+        zoom: 12,
         controls: [],
       });
 
-      // const multiRoute = new ymaps.multiRouter.MultiRoute(
-      //   {
-      //     referencePoints: ['Москва, Парк Победы', 'Москва, Лосиный остров'],
-      //     params: {
-      //       avoidTrafficJams: false,
-      //     },
-      //   },
-      //   {
-      //     // Автоматически устанавливать границы карты так,
-      //     // чтобы маршрут был виден целиком.
-      //     boundsAutoApply: true,
-      //   }
-      // );
-
-      // YMap.geoObjects.add(multiRoute);
-
-      // // Подпишемся на событие построения мультимаршрута.
-      // multiRoute.model.events.add('requestsuccess', function () {
-      //   // Коллекция путевых точек маршрута.
-      //   var wayPoints = multiRoute.getWayPoints();
-
-      //   console.info(wayPoints);
-
-      //   // Проход по коллекции путевых точек.
-      //   // Для каждой точки зададим содержимое меток.
-      //   wayPoints.each(function (point: any) {
-      //     point.options.set({
-      //       preset: 'islands#redStretchyIcon',
-      //       iconContentLayout: ymaps.templateLayoutFactory.createClass(
-      //         '{{ properties.request|raw }}'
-      //       ),
-      //     });
-      //   });
-      // });
-
-      // // Добавление маршрута на карту.
-      // YMap.geoObjects.add(multiRoute);
+      setMapInstance(YMap);
     });
   }, []);
+
+  useEffect(() => {
+    if (routes && mapInstance) {
+       const route = new ymaps.multiRouter.MultiRoute(
+        {
+          referencePoints: points,
+          params: {
+            avoidTrafficJams: false,
+          },
+        },
+        {
+          activeRouteAutoSelection: true,
+          boundsAutoApply: true,
+        }
+      );
+
+      mapInstance.geoObjects.removeAll();
+      mapInstance.geoObjects.add(route);
+    }
+  }, [routes]);
+
   return (
     <div
       className={styles.container}

@@ -25,7 +25,7 @@
 
 .container {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr 300px;
     height: calc(100vh - 70px);
 }
 
@@ -63,6 +63,21 @@
   box-shadow: 3px 4px 4px rgba(143, 121, 220, 0.25);
 }
 
+.sidebarLeftContent {
+  display: grid;
+  gap: 24px;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.route {
+  font-family: 'Rubik';
+}
+
+.routeTitle {
+  margin: 0 0 5px 0;
+}
+
 .sidebarRight {
   border-left: 1px solid #dddddd;
   box-shadow: -3px 4px 4px rgba(143, 121, 220, 0.25);
@@ -71,6 +86,37 @@
 .sidebarRightTitle {
   font: normal 24px 'Rubik';
   text-transform: uppercase;
+}
+
+.sidebarRightHeader {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.sidebarRightContent {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  border-left: 2px solid #8F79DC;
+  padding-left: 30px;
+}
+
+.pointer {
+  position: absolute;
+
+  left: -15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  color: #ffffff;
+  background-color: #8F79DC;
+
+  border-radius: 50px;
 }
 
 .divider {
@@ -84,4 +130,16 @@
   border-radius: 25px;
   border: 1px solid #E0DFF0;
   box-shadow: none;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.metaItem {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 5px;
+  align-items: center;
 }
