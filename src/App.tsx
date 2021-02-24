@@ -1,8 +1,8 @@
-import cn from 'classnames';
 import format from 'date-fns/format';
+import Calendar from 'react-calendar';
+
 import { FC, useState } from 'react';
 import { Search as SearchIcon } from 'react-ionicons';
-import Calendar from 'react-calendar';
 import { RocketOutline, StopwatchOutline } from 'react-ionicons';
 
 import { Map } from './component/Map';
@@ -10,9 +10,9 @@ import { Card } from './component/Card';
 
 import styles from './App.module.css';
 
-import { data } from './data';
+import { data } from './configs/data';
+import { markers } from './configs/vars';
 
-const markers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
 export const App: FC = () => {
   const [activeUserID, setActiveUserID] = useState<string>();
